@@ -1,6 +1,7 @@
 variable "vms" {
   type = map(object({
     rg_name   = string
+    vm_name   = string
     rg_location  = string
     nic_key   = string
 

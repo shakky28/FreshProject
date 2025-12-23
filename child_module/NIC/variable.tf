@@ -9,4 +9,5 @@ variable "nics" {
 
 variable "subnet_ids" {
   type = map(string)
+    
 }

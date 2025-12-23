@@ -1,6 +1,6 @@
 resource "azurerm_linux_virtual_machine" "sg_vm" {
   for_each            = var.vms
-  name                = each.key
+  name                = each.value.vm_name
   resource_group_name = each.value.rg_name
   location            = each.value.rg_location
   size                = "Standard_F2"
