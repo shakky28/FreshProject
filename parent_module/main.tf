@@ -31,33 +31,33 @@ module "sg_vm" {
   
 }
 
-# module "sg_pip" {
-#   source = "../child_module/Public_IP"
-#   public_ip = var.public_ips
-#   depends_on = [ module.sg_rg ]
+module "sg_pip" {
+  source = "../child_module/Public_IP"
+  public_ip = var.public_ips
+  depends_on = [ module.sg_rg ]
   
-# }
+}
 
-# module "sg_nsg" {
-#   source = "../child_module/NSG"
-#   nsgs = var.nsgs
-#   depends_on = [ module.sg_rg ]
+module "sg_nsg" {
+  source = "../child_module/NSG"
+  nsgs = var.nsgs
+  depends_on = [ module.sg_rg ]
   
-# }
+}
 
 module "nic" {
   source = "../child_module/NIC"
   nics = var.nics
   subnet_ids = module.sg_subnet.subnet_ids
-  # depends_on = [ module.sg_rg , module.sg_vnets , module.sg_subnet , module.sg_pip ]
+  depends_on = [ module.sg_rg , module.sg_vnets , module.sg_subnet , module.sg_pip ]
   
 }
 
-# module "sg_kv" {
-#   source = "../child_module/KeyVault"
-#   depends_on = [ module.sg_rg ]
+module "sg_kv" {
+  source = "../child_module/KeyVault"
+  depends_on = [ module.sg_rg ]
   
-# }
+}
 
 # module "sg_lb" {
 #   source = "../child_module/LoadBalancer"
