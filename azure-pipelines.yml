@@ -26,14 +26,7 @@ stages:
             backendAzureRmStorageAccountName: stg50411
             backendAzureRmContainerName: tfstate
             backendAzureRmKey: task.terraform.tfstate
-
-        - task: TerraformTaskV4@4
-          displayName: "Terraform fmt"
-          inputs:
-            provider: none
-            command: fmt
-            workingDirectory: $(System.DefaultWorkingDirectory)
-            
+         
 
         - task: TerraformTaskV4@4
           displayName: "Terraform validate"
