@@ -20,7 +20,7 @@ stages:
           inputs:
             provider: azurerm
             command: init
-            workingDirectory: $(System.Default_Working_Directory)
+            workingDirectory: $(System.DefaultWorkingDirectory)
             backendServiceArm: Shekhar-SVC
             backendAzureRmResourceGroupName: sgrg1000
             backendAzureRmStorageAccountName: stg50411
@@ -32,7 +32,7 @@ stages:
           inputs:
             provider: azurerm
             command: custom
-            workingDirectory: $(System.Default_Working_Directory)
+            workingDirectory: $(System.DefaultWorkingDirectory)
             customCommand: fmt
 
         - task: TerraformTaskV4@4
@@ -40,14 +40,14 @@ stages:
           inputs:
             provider: azurerm
             command: validate
-            workingDirectory: $(System.Default_Working_Directory)
+            workingDirectory: $(System.DefaultWorkingDirectory)
 
         - task: TerraformTaskV4@4
           displayName: "Terraform plan"
           inputs:
             provider: azurerm
             command: plan
-            workingDirectory: $(System.Default_Working_Directory)
+            workingDirectory: $(System.DefaultWorkingDirectory)
             environmentServiceNameAzureRM: Shekhar-SVC
             commandOptions: "-out=tfplan"
 
@@ -77,7 +77,7 @@ stages:
           inputs:
             provider: azurerm
             command: init
-            workingDirectory: $(System.Default_Working_Directory)
+            workingDirectory: $(System.DefaultWorkingDirectory)
             backendServiceArm: Shekhar-SVC
             backendAzureRmResourceGroupName: sgrg1000
             backendAzureRmStorageAccountName: stg50411
@@ -92,6 +92,6 @@ stages:
           inputs:
             provider: azurerm
             command: apply
-            workingDirectory: $(System.Default_Working_Directory)
+            workingDirectory: $(System.DefaultWorkingDirectory)
             environmentServiceNameAzureRM: Shekhar-SVC
             commandOptions: "tfplan"
