@@ -39,7 +39,9 @@ stages:
             command: 'plan'
             workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
             environmentServiceNameAzureRM: 'Shekhar-SVC'
-
+            commandOptions: "-out=tfplan"
+        - publish: $(System.DefaultWorkingDirectory)/parent_module/tfplan
+          artifact: tfplan
 
 - stage: Manual_Approval
   displayName: "Manual Validation"
