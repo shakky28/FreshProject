@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-22.04
+  name : SG=Agent
 
 stages:
 - stage: Terraform_Checks
@@ -67,7 +67,7 @@ stages:
           inputs:
             provider: azurerm
             command: init
-            workingDirectory: $(System.DefaultWorkingDirectory)
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
             backendServiceArm: Shekhar-SVC
             backendAzureRmResourceGroupName: sgrg1000
             backendAzureRmStorageAccountName: stg50411
@@ -82,7 +82,7 @@ stages:
           inputs:
             provider: none
             command: apply
-            workingDirectory: $(System.DefaultWorkingDirectory)
+            workingDirectory: '$(System.DefaultWorkingDirectory)/parent_module'
             environmentServiceNameAzureRM: Shekhar-SVC
             commandOptions: "tfplan"
 
