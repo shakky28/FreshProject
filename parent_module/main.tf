@@ -77,8 +77,11 @@ module "sg_kv" {
   
 # }
 
-# module "sg_log" {
-#   source = "../child_module/LogAnalyticsWorkspace"
-#   depends_on = [ module.sg_rg ]
+module "sg_log" {
+  source = "../child_module/LogAnalyticsWorkspace"
+  depends_on = [ module.sg_rg ]
+  law_name = "sglog"
+  rg_location = "central india"
+  rg_name = "sgrg1"
   
-# }
+}
