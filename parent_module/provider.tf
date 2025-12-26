@@ -6,7 +6,8 @@ terraform {
     }
   }
 
-  backend "azurerm" {                                   
+  backend "azurerm" {  
+    use_cli          = true                       
     use_azuread_auth     = true                                    
     tenant_id            = "8511c397-31e5-4758-ac6b-099e3eadbe24"  
     storage_account_name = "stg50411"                              
